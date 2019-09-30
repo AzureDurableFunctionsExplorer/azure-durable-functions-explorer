@@ -6,7 +6,7 @@ import { Store } from "@ngxs/store";
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
 
-    constructor(private readonly authenticationService: AuthenticationService, private readonly router: Router, private readonly store: Store) {
+    constructor(private readonly authenticationService: AuthenticationService, private readonly router: Router) {
 
     }
 

@@ -8,7 +8,7 @@ import { MsalGuard } from "@azure/msal-angular";
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'home', redirectTo: ''},
-  { path: 'explore', component: DurableFunctionExplorerComponent },
+  { path: 'explore', component: DurableFunctionExplorerComponent, canActivate: [AuthenticationGuard] },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -19,6 +19,10 @@ export class AuthenticationService {
       this.msalService.loginRedirect();
   }
 
+  loginToTenant(tenant: string): void {
+
+  }
+
   logout() {
 
       this.msalService.logout();
