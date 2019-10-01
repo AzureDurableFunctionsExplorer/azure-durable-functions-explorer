@@ -1,4 +1,4 @@
-import { User } from '@models';
+import { User, FunctionApp } from '@models';
 
 export type UserStateModel = {
   loggedInUser: User;

@@ -1,3 +1,8 @@
-<div class="papa">
-  <div *ngFor="let item of items">{{ item }}</div>
+<div class="list-container">
+  <ng-container *ngIf="(selectedApp$ | async) || true; let selectedApp">
+    <div class="function-app" *ngFor="let app of availableApps$ | async" (click)="selectApp(app.id)" [ngClass]="{'selected': app === selectedApp}">
+      <img class="app-icon" src="../../../assets/images/function_apps.svg" />
+      <span class="regular-font-color-dark">{{ app.name }}</span>
+    </div>
+  </ng-container>
 </div>

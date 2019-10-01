@@ -13,8 +13,9 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { DurableFunctionExplorerComponent } from './components/durable-function-explorer/durable-function-explorer.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { UserState } from './store/states/user.state';
 import { FunctionAppsListComponent } from './components/function-apps-list/function-apps-list.component';
+import { UserState, FunctionsState } from '@states';
+import { FunctionAppComponent } from './components/function-app/function-app.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,14 @@ import { FunctionAppsListComponent } from './components/function-apps-list/funct
     DurableFunctionExplorerComponent,
     AppHeaderComponent,
     FunctionAppsListComponent,
+    FunctionAppComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxsModule.forRoot([UserState]),
+    NgxsModule.forRoot([UserState, FunctionsState]),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     MsalModule.forRoot({
       clientID: environment.aadClientId,

@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/icon?family=Roboto';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 $main-color-light: #3999C6;
 $main-color-dark: #286C8C;
@@ -82,4 +83,29 @@ div {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: $main-color-light;
   }
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
