@@ -1,7 +1,6 @@
-import { State, Selector, Action, StateContext } from "@ngxs/store";
+import { State, Selector, Action, StateContext, InitState } from "@ngxs/store";
 import { UserStateModel } from '../models';
 import { Login, Logout } from '@actions';
-
 
 @State<UserStateModel>({
   name: "user",

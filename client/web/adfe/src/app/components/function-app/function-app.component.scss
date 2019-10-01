@@ -1,0 +1,23 @@
+@import '../../../styles.scss';
+
+.app-container {
+
+  >.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0 10px 20px;
+    border-bottom: 1px solid $main-color-dark;
+
+    >.functions-icon {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    >.app-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: $main-color-dark;
+    }
+  }
+}
