@@ -1,0 +1,21 @@
+<div class="header background-light">
+  <span class="title-main accent-font-color-light">ADFE</span>
+  <span class="title-secondary accent-font-color-dark">Azure Durable Functions Explorer</span>
+
+  <ng-container *ngIf="isLoggingIn$ | async; else actions">
+    <div class="loader small"></div>
+  </ng-container>
+
+  <ng-template #actions>
+    <ng-container *ngIf="loggedInUser$ | async as user; else signin">
+      <span class="user-email accent-font-color-light">{{ user.email }}</span>
+      <img class="user-image" src="{{ user.imageUrl }}" />
+      <span class="sign-out accent-font-color-dark" (click)="logout()">Sign Out</span>
+    </ng-container>
+
+    <ng-template #signin>
+      <span class="sign-in accent-font-color-dark" (click)="login()">Sign In</span>
+    </ng-template>
+  </ng-template>
+
+</div>

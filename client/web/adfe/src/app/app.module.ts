@@ -6,13 +6,13 @@ import { environment } from 'src/environments/environment.prod';
 import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent, LoginComponent, AppShellComponent } from 'src/app/components';
-import { AuthenticationService } from 'src/app/services';
 import { AuthenticationGuard } from 'src/app/guards';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { DurableFunctionExplorerComponent } from './components/durable-function-explorer/durable-function-explorer.component';
-import { HttpClient } from '@angular/common/http';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { UserState } from './store/states/user.state';
 
 @NgModule({
   declarations: [
@@ -21,14 +21,15 @@ import { HttpClient } from '@angular/common/http';
     LoginComponent,
     AppShellComponent,
     HomeComponent,
-    DurableFunctionExplorerComponent
+    DurableFunctionExplorerComponent,
+    AppHeaderComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxsModule.forRoot([]),
+    NgxsModule.forRoot([UserState]),
     MsalModule.forRoot({
       clientID: environment.aadClientId,
       redirectUri: environment.redirectUri,
@@ -45,9 +46,9 @@ import { HttpClient } from '@angular/common/http';
         'https://management.azure.com/user_impersonation',
         'https://management.azure.com//user_impersonation'],
       protectedResourceMap: [
-          ['http://localhost:4200', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
-          ['https://management.azure.com/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
-          ['https://management.core.windows.net/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']] ]
+        ['http://localhost:4200', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
+        ['https://management.azure.com/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
+        ['https://management.core.windows.net/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']]]
     })
   ],
   providers: [{
@@ -55,7 +56,7 @@ import { HttpClient } from '@angular/common/http';
     useClass: MsalInterceptor,
     multi: true
   },
-  AuthenticationGuard],
+    AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

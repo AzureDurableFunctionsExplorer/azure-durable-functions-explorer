@@ -10,7 +10,10 @@
         "./src/app/models/index.ts"
       ],
       "@states": [
-        "./src/app/states/index.ts"
+        "./src/app/store/states/index.ts"
+      ],
+      "@actions": [
+        "./src/app/store/actions/index.ts"
       ],
       "@services": [
         "./src/app/services/index.ts"
