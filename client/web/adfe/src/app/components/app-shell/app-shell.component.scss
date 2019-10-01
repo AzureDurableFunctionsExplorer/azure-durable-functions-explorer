@@ -1,3 +1,22 @@
-.header-container {
-  max-height: 50px;
+$header-height: 50px;
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 20% 20% 25% auto;
+  grid-template-rows: $header-height calc(100vh - #{$header-height});
+
+  >.body-column {
+    box-shadow: 1px 0px 4px #000000;
+    overflow-y: auto;
+    grid-row-start: 2;
+  }
+
+  >.functions-app-container {
+    grid-column-start: 1;
+  }
+
+  >.header-container {
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
 }

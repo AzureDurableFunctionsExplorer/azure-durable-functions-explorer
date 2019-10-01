@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent, LoginComponent, AppShellComponent } from 'src/app/components';
@@ -13,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DurableFunctionExplorerComponent } from './components/durable-function-explorer/durable-function-explorer.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { UserState } from './store/states/user.state';
+import { FunctionAppsListComponent } from './components/function-apps-list/function-apps-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { UserState } from './store/states/user.state';
     HomeComponent,
     DurableFunctionExplorerComponent,
     AppHeaderComponent,
+    FunctionAppsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { UserState } from './store/states/user.state';
     AppRoutingModule,
     HttpClientModule,
     NgxsModule.forRoot([UserState]),
+    NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     MsalModule.forRoot({
       clientID: environment.aadClientId,
       redirectUri: environment.redirectUri,
