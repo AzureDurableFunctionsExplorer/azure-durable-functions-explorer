@@ -5,6 +5,12 @@
     <span class="app-name">{{ selectedApp.name }}</span>
   </div>
 
-
+  <div class="execution" *ngFor="let execution of appExecutions$ | async">
+    <div class="indicator"></div>
+    <span class="execution-name">{{ execution.name }}</span>
+    <span class="execution-timestamp">{{ execution.startTimestamp | date:'medium' }}</span>
+    <i class="material-icons status-icon rotate" *ngIf="execution.runtimeStatus === 'Running'">autorenew</i>
+    <i class="material-icons status-icon" *ngIf="execution.runtimeStatus === 'Completed'">done</i>
+  </div>
 
 </div>
