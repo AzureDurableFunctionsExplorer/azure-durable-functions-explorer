@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BroadcastService, MsalService } from '@azure/msal-angular';
+import { User, Authority } from 'msal';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ export class AuthenticationService {
       return this.msalService.getUser() != null;
   }
 
+  public get user(): User {
+
+    return this.msalService.getUser();
+  }
+
   constructor(private readonly msalService: MsalService) { }
 
   login() {
@@ -20,7 +26,7 @@ export class AuthenticationService {
   }
 
   loginToTenant(tenant: string): void {
-
+    this.msalService.acquireTokenRedirect(['https://management.core.windows.net//user_impersonation'], tenant);
   }
 
   logout() {
