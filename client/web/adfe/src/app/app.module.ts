@@ -35,20 +35,14 @@ import { UserState } from './store/states/user.state';
       redirectUri: environment.redirectUri,
       authority: environment.aadAuthority,
       consentScopes: [
-        'user_impersonation',
-        'api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation',
-        'https://management.azure.com//.default',
-        'https://management.azure.com/',
-        'https://management.azure.com//',
-        'https://management.core.windows.net//user_impersonation',
-        'https://management.azure.com/.default',
-        'https://management.azure.com//.default',
-        'https://management.azure.com/user_impersonation',
-        'https://management.azure.com//user_impersonation'],
+        environment.azureResourceManagerScope
+      ],
       protectedResourceMap: [
-        ['http://localhost:4200', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
-        ['https://management.azure.com/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
-        ['https://management.core.windows.net/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']]]
+        ['http://localhost:4200', [environment.azureResourceManagerScope]],
+        ['https://management.azure.com//', [environment.azureResourceManagerScope]],
+        ['https://management.azure.com/', [environment.azureResourceManagerScope]],
+        ['https://management.core.windows.net//', [environment.azureResourceManagerScope]],
+        ['https://management.core.windows.net//', [environment.azureResourceManagerScope]]]
     })
   ],
   providers: [{

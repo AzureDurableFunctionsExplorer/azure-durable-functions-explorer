@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   test(): void {
+    // this.http.get<any>(`https://management.azure.com/tenants/?api-version=2017-05-10`).subscribe(a => console.dir(a));
     this.http.get<any>(`https://management.azure.com/tenants/?api-version=2017-05-10`).subscribe(a => console.dir(a));
   }
 }
