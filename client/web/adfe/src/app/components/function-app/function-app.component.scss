@@ -31,11 +31,13 @@ $time-cell-size: 150px;
     grid-template-rows: 60% 40%;
     column-gap: 5px;
     padding: 0 10px 0 20px;
+    margin: 5px 0;
     height: 45px;
     cursor: pointer;
 
     &:hover {
       background-color: $main-color-light;
+      font-weight: bold;
 
       >.execution-name {
         color: $accent-color-dark;
@@ -47,6 +49,22 @@ $time-cell-size: 150px;
 
       >.status-icon {
         color: $accent-color-dark;
+      }
+    }
+
+    &.selected {
+      background-color: $main-color-dark;
+
+      >.execution-name {
+        color: $accent-color-light;
+      }
+
+      >.indicator {
+        background-color: $accent-color-light;
+      }
+
+      >.status-icon {
+        color: $accent-color-light;
       }
     }
 

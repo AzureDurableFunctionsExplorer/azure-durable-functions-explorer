@@ -4,4 +4,5 @@ export type FunctionsStateModel = {
   availableApps: FunctionApp[];
   selectedAppId: string;
   appExecutions: OrchestratorExecution[];
+  selectedOrchestrationId: string;
 }

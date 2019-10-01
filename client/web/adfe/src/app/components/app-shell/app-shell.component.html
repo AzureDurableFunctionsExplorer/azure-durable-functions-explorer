@@ -5,15 +5,18 @@
   <div class="function-apps-list-container body-column">
     <function-apps-list></function-apps-list>
   </div>
-  <div class="body-column function-app-container">
+  <div *ngIf="selectedApp$ | async" class="body-column function-app-container">
     <function-app></function-app>
   </div>
 
-  <div class="execution-context">
-    SOMETHING SOMETHING
-  </div>
+  <ng-container *ngIf="selectedExecution$ | async as selectedExecution">
+    <div class="execution-context">
+      <span class="name">{{ selectedExecution.name }}</span>
+      <span class="timestamp">{{ selectedExecution.startTimestamp | date:'medium' }}</span>
+    </div>
 
-  <div class="body-column execution-details">
-    <router-outlet></router-outlet>
-  </div>
+    <div *ngIf="selectedExecution$ | async" class="body-column execution-details">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-container>
 </div>

@@ -1,11 +1,12 @@
-<div class="app-container" *ngIf="selectedApp$ | async as selectedApp">
+<div class="app-container" *ngIf="(selectedExecution$ | async) || true; let selectedExecution">
 
-  <div class="header">
+  <div class="header" *ngIf="selectedApp$ | async as selectedApp">
     <img class="functions-icon" src="../../../assets/images/function_apps.svg" />
     <span class="app-name">{{ selectedApp.name }}</span>
   </div>
 
-  <div class="execution" *ngFor="let execution of appExecutions$ | async">
+  <div class="execution" *ngFor="let execution of appExecutions$ | async" (click)="selectExecution(execution.orchestrationId)"
+       [ngClass]="{'selected': execution === selectedExecution}">
     <div class="indicator"></div>
     <span class="execution-name">{{ execution.name }}</span>
     <span class="execution-timestamp">{{ execution.startTimestamp | date:'medium' }}</span>

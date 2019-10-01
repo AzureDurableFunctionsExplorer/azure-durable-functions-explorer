@@ -1,6 +1,6 @@
 import { FunctionsStateModel } from '../models';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { Login, SelectApp } from '@actions';
+import { Login, SelectApp, SelectExecution } from '@actions';
 import { FunctionAppDetailsDto } from '@dtos';
 import { TenantService, FunctionsService } from '@services';
 
@@ -9,7 +9,8 @@ import { TenantService, FunctionsService } from '@services';
   defaults: {
     availableApps: [],
     selectedAppId: null,
-    appExecutions: []
+    appExecutions: [],
+    selectedOrchestrationId: null
   }
 })
 export class FunctionsState {
@@ -31,6 +32,11 @@ export class FunctionsState {
     return state.appExecutions;
   }
 
+  @Selector()
+  static selectedExecution(state: FunctionsStateModel) {
+    return state.appExecutions.find(execution => execution.orchestrationId === state.selectedOrchestrationId);
+  }
+
   @Action(Login)
   async getAvailableApps(ctx: StateContext<FunctionsStateModel>) {
     const availableApps: FunctionAppDetailsDto[] = await this.tenantService.getAllFunctionApps().toPromise();
@@ -48,5 +54,10 @@ export class FunctionsState {
     ctx.patchState({
       appExecutions: executions
     })
+  }
+
+  @Action(SelectExecution)
+  selectExecution(ctx: StateContext<FunctionsStateModel>, selectExecutionAction: SelectExecution) {
+    ctx.patchState({ selectedOrchestrationId: selectExecutionAction.orchestrationId });
   }
 }
