@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   redirectUri: 'http://localhost:4200/login',
-  aadClientId: '28d8f9af-b90b-47a1-8d33-474148a9d911',
+  aadClientId: 'e38a7710-aab9-48bb-8198-8566ed058cf2',
   aadAuthority: 'https://login.microsoftonline.com/organizations',
   azureResourceManagerScope: 'https://management.azure.com/user_impersonation',
   azureResourceManagerApiBase: 'https://management.azure.com/'

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent, LoginComponent, AppShellComponent } from 'src/app/components';
@@ -37,12 +37,7 @@ import { UserState } from './store/states/user.state';
       consentScopes: [
         environment.azureResourceManagerScope
       ],
-      protectedResourceMap: [
-        ['http://localhost:4200', [environment.azureResourceManagerScope]],
-        ['https://management.azure.com//', [environment.azureResourceManagerScope]],
-        ['https://management.azure.com/', [environment.azureResourceManagerScope]],
-        ['https://management.core.windows.net//', [environment.azureResourceManagerScope]],
-        ['https://management.core.windows.net//', [environment.azureResourceManagerScope]]]
+      protectedResourceMap: [[environment.azureResourceManagerApiBase, [environment.azureResourceManagerScope]]]
     })
   ],
   providers: [{
