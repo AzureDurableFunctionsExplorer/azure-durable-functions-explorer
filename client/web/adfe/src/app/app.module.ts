@@ -39,20 +39,9 @@ import { FunctionAppsListComponent } from './components/function-apps-list/funct
       redirectUri: environment.redirectUri,
       authority: environment.aadAuthority,
       consentScopes: [
-        'user_impersonation',
-        'api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation',
-        'https://management.azure.com//.default',
-        'https://management.azure.com/',
-        'https://management.azure.com//',
-        'https://management.core.windows.net//user_impersonation',
-        'https://management.azure.com/.default',
-        'https://management.azure.com//.default',
-        'https://management.azure.com/user_impersonation',
-        'https://management.azure.com//user_impersonation'],
-      protectedResourceMap: [
-        ['http://localhost:4200', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
-        ['https://management.azure.com/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']],
-        ['https://management.core.windows.net/', ['api://e38a7710-aab9-48bb-8198-8566ed058cf2/user_impersonation']]]
+        environment.azureResourceManagerScope
+      ],
+      protectedResourceMap: [[environment.azureResourceManagerApiBase, [environment.azureResourceManagerScope]]]
     })
   ],
   providers: [{
